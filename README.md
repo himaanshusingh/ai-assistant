@@ -57,9 +57,7 @@ ai-assistant/
 │   ├── package.json
 │   └── vite.config.js
 ├── docker-compose.yml
-```
 ├── README.md
-└── demo_script.md              # 3-4 minutes demo presentation script
 ```
 
 ---
@@ -71,7 +69,7 @@ You can run this project either **locally** or using **Docker**.
 ### Prerequisites
 1. **Node.js** (v18+) and **npm** installed (if running locally).
 2. **MongoDB** instance running locally or a MongoDB Atlas URI (if running locally).
-3. **Gemini API Key** from [Google AI Studio](https://aistudio.google.com/). It is completely free to create.
+3. **Gemini API Key** from [Google AI Studio](https://aistudio.google.com/).
 
 ---
 
@@ -90,8 +88,8 @@ You can run this project either **locally** or using **Docker**.
    docker-compose up --build
    ```
 4. Access the applications:
-   - **Frontend**: `http://localhost:3000`
-   - **Backend**: `http://localhost:5000`
+   - **Frontend**: `http://localhost:5173`
+   - **Backend**: `http://localhost:3000`
    - **MongoDB**: `mongodb://localhost:27017`
 
 ---
@@ -116,7 +114,7 @@ You can run this project either **locally** or using **Docker**.
    ```bash
    npm run dev
    ```
-   *The server runs on `http://localhost:5000`.*
+   *The server runs on `http://localhost:3000`.*
 
 #### 2. Setup Frontend
 1. Open a new terminal window and navigate to the frontend folder:
@@ -127,11 +125,16 @@ You can run this project either **locally** or using **Docker**.
    ```bash
    npm install
    ```
-3. Start the Vite development server:
+3. Copy the environment variables template and configure it:
+   ```bash
+   cp .env.example .env
+   ```
+   *Add your `VITE_API_URL`.
+4. Start the Vite development server:
    ```bash
    npm run dev
    ```
-   *The client will be running on `http://localhost:3000`.*
+   *The client will be running on `http://localhost:5173`.*
 
 ---
 
