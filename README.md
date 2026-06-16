@@ -6,7 +6,22 @@ This project was built as part of the Technical Assessment for the AI Engineer D
 
 ---
 
+## How to Use
+
+> For the best experience, start the backend first. After the backend has loaded, open the frontend.
+
+### Step 1: Start the backend
+
+Click and open the backend service first: [Open Backend](https://faq-ai-assistant.onrender.com/)
+
+### Step 2: Open the frontend
+
+Once the backend is running, open the frontend application:[Open Frontend](https://faq-ai-assistant.vercel.app/)
+
+---
+
 ## Tech Stack
+
 - **Frontend**: React.js (Vite) styled with **Tailwind CSS v4**
 - **Backend**: Node.js + Express.js
 - **Database**: MongoDB
@@ -15,6 +30,7 @@ This project was built as part of the Technical Assessment for the AI Engineer D
 ---
 
 ## Features
+
 1. **Interactive Chat UI**: A clean, responsive chat dashboard to enter questions and view AI answers.
 2. **Conversation History**: All Q&A pairs and timestamps are saved in MongoDB and listed in the sidebar.
 3. **Search Filters (Bonus)**: Easily search past conversations by keywords (queries both questions and answers).
@@ -24,6 +40,7 @@ This project was built as part of the Technical Assessment for the AI Engineer D
 ---
 
 ## Project Structure
+
 ```text
 ai-assistant/
 ├── backend/
@@ -57,7 +74,7 @@ ai-assistant/
 │   ├── package.json
 │   └── vite.config.js
 ├── docker-compose.yml
-├── README.md
+└── README.md
 ```
 
 ---
@@ -67,6 +84,7 @@ ai-assistant/
 You can run this project either **locally** or using **Docker**.
 
 ### Prerequisites
+
 1. **Node.js** (v18+) and **npm** installed (if running locally).
 2. **MongoDB** instance running locally or a MongoDB Atlas URI (if running locally).
 3. **Gemini API Key** from [Google AI Studio](https://aistudio.google.com/).
@@ -97,6 +115,7 @@ You can run this project either **locally** or using **Docker**.
 ### Option B: Running Locally
 
 #### 1. Setup Backend
+
 1. Navigate to the backend folder:
    ```bash
    cd backend
@@ -109,14 +128,15 @@ You can run this project either **locally** or using **Docker**.
    ```bash
    cp .env.example .env
    ```
-   *Add your `GEMINI_API_KEY` and update the `MONGO_URI` if your local MongoDB instance runs on a different port or server.*
+   _Add your `GEMINI_API_KEY` and update the `MONGO_URI` if your local MongoDB instance runs on a different port or server._
 4. Start the backend:
    ```bash
    npm run dev
    ```
-   *The server runs on `http://localhost:3000`.*
+   _The server runs on `http://localhost:3000`._
 
 #### 2. Setup Frontend
+
 1. Open a new terminal window and navigate to the frontend folder:
    ```bash
    cd frontend
@@ -129,19 +149,21 @@ You can run this project either **locally** or using **Docker**.
    ```bash
    cp .env.example .env
    ```
-   *Add your `VITE_API_URL`.
+   _Add your `GEMINI_API_KEY`._
 4. Start the Vite development server:
    ```bash
    npm run dev
    ```
-   *The client will be running on `http://localhost:5173`.*
+   _The client will be running on `http://localhost:5173`._
 
 ---
 
 ## API Endpoints
 
 ### `POST /api/chat`
+
 Sends a question to the backend, retrieves the AI response from Gemini, saves the record to MongoDB, and returns the created document.
+
 - **Request Body**: `{ "question": "What is SQL?" }`
 - **Response**:
   ```json
@@ -155,11 +177,15 @@ Sends a question to the backend, retrieves the AI response from Gemini, saves th
   ```
 
 ### `GET /api/conversations`
+
 Fetches conversation history sorted by newest first.
+
 - **Optional Query Params**: `?search=term` (searches within questions and answers).
 
 ### `DELETE /api/conversations/:id`
+
 Deletes a specific conversation by ID.
 
 ### `DELETE /api/conversations`
+
 Clears the entire conversation history database.
