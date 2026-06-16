@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { connectDB } from "./config/db.js";
-import chatRoutes from "./routes/chatRoutes.js";
+import { connectDB } from "./src/config/db.js";
+import chatRoutes from "./src/routes/chatRoutes.js";
 import { fileURLToPath } from "url";
 import path from "path";
 
@@ -21,6 +21,7 @@ connectDB();
 // API Routes
 app.use("/api", chatRoutes);
 
+/*------------------------------------ DEPLOYMENT ------------------------------------- */
 if (process.env.NODE_ENV === "production") {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
@@ -31,8 +32,8 @@ if (process.env.NODE_ENV === "production") {
 } else {
   app.get("/", (req, res) => res.send("API is running..."));
 }
+/*------------------------------------ DEPLOYMENT ------------------------------------- */
 
-// Start Server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
